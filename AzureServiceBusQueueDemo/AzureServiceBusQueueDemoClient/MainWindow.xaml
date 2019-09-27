@@ -1,0 +1,33 @@
+﻿<Window x:Class="AzureServiceBusQueueDemoClient.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AzureServiceBusQueueDemoClient"
+        mc:Ignorable="d"
+        Title="Messaging Client" Height="100.105" Width="558.792">
+    <DockPanel Name="mainParent">
+        <Grid DockPanel.Dock="Top" Height="40">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="0*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="126*"/>
+                <ColumnDefinition Width="259*"/>
+                <ColumnDefinition Width="255*"/>
+            </Grid.ColumnDefinitions>
+            <Label Content="Message Text" Margin="6,6,6,94"/>
+            <TextBox Name="txtMessageText" TextWrapping="Wrap" Text="" Grid.Column="1" Margin="6,6,21,94"/>
+            <StackPanel Margin="0,4,4,0" HorizontalAlignment="Right" VerticalAlignment="Top" Orientation="Horizontal" Grid.Column="1" Height="32" Width="204" Grid.ColumnSpan="2">
+                <Button Name="cmdStart" Content="Start Sending" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="90" Click="CmdStart_Click" IsEnabled="{Binding CanStart}"/>
+                <Button Name="cmdStop" Content="Stop Sending" HorizontalAlignment="Left" VerticalAlignment="Top" Width="90" Click="CmdStop_Click" IsEnabled="{Binding CanStop}"/>
+            </StackPanel>
+        </Grid>
+        <StatusBar DockPanel.Dock="Bottom"  VerticalAlignment="Bottom">
+            <StatusBarItem>
+                <TextBlock Name="lblmessage" Text="{Binding Path=Message}" />
+            </StatusBarItem>
+        </StatusBar>
+    </DockPanel>
+</Window>
