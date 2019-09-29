@@ -5,8 +5,11 @@ az login
 #   We'll use this only for our demo so we can easily clean up
 az group create -n CentriqAzureDemo -l eastus
 
-#  Create the AzureDemo Storage Account
+#  Create the Service Buss Namespace
 az servicebus namespace create -n CentriqSBQueueDemo -g CentriqAzureDemo -l eastus
+
+#  Create the Queue
+Az servicebus queue create -n testqueue --namespace-name CentriqSBQueueDemo -g CentriqAzureDemo
 
 #  Create a Access Policy for the Listener Service
 az servicebus queue authorization-rule create --queue-name testqueue --resource-group CentriqAzureDemo --namespace-name CentriqSBQueueDemo --name ListenerAccessKey --rights Manage, Send, Listen
